@@ -1,4 +1,4 @@
-package com.scosyf.net;
+package com.scosyf.utils.net;
 
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
@@ -7,9 +7,9 @@ import java.security.NoSuchProviderException;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 
-import com.scosyf.net.common.AnyX509TrustManager;
-import com.scosyf.net.client.HttpConnectionClient;
-import com.scosyf.net.client.HttpsConnectionClient;
+import com.scosyf.utils.net.client.HttpConnectionClient;
+import com.scosyf.utils.net.client.HttpsConnectionClient;
+import com.scosyf.utils.net.common.AnyX509TrustManager;
 
 
 public class HttpsTest {

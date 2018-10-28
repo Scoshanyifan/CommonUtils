@@ -1,4 +1,4 @@
-package com.scosyf.net.client;
+package com.scosyf.utils.net.client;
 
 import java.net.URLEncoder;
 import java.util.Map;
@@ -8,8 +8,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.scosyf.net.common.NetWorkConstant;
-import com.scosyf.net.common.NetWorkTimeout;
+import com.scosyf.utils.net.common.NetWorkConstant;
+import com.scosyf.utils.net.common.NetWorkTimeout;
 
 
 public class HttpConnectionClient {

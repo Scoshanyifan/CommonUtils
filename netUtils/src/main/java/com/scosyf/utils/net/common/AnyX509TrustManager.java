@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2016, MicroAnts. All rights reserved.
  */
-package com.scosyf.net.common;
+package com.scosyf.utils.net.common;
 
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;

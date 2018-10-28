@@ -1,4 +1,4 @@
-package com.scosyf.net.common;
+package com.scosyf.utils.net.common;
 
 public class NetWorkTimeout {
 

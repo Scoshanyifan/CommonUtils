@@ -1,4 +1,4 @@
-package com.scosyf.net.client;
+package com.scosyf.utils.net.client;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,8 +17,8 @@ import javax.net.ssl.SSLSocketFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.scosyf.net.common.NetWorkConstant;
-import com.scosyf.net.common.NetWorkTimeout;
+import com.scosyf.utils.net.common.NetWorkConstant;
+import com.scosyf.utils.net.common.NetWorkTimeout;
 
 
 class NetWorkExecutor {
