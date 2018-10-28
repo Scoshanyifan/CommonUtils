@@ -1,2 +1,9 @@
 # CommonUtils
-Excel，图片生成，http请求以及常用工具类
+
+工具类：
+
+1.Excel的读写，支持简单模式
+
+2.http(s)连接
+
+3.翻译工具(youdao)
