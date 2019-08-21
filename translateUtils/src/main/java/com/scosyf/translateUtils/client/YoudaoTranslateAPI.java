@@ -16,7 +16,7 @@ public class YoudaoTranslateAPI {
     
     /**
      * 英翻中
-     * @param word
+     * @param english
      * @return 翻译结果，若查询异常返回原始数据
      */
     public static String getTranslateEN2CH(String english) {

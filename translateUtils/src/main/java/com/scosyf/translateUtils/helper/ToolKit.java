@@ -10,7 +10,6 @@ public class ToolKit {
     
     /**
      * 根据api地址和参数生成请求URL
-     * @param url
      * @param params
      * @return
      */
@@ -35,7 +34,6 @@ public class ToolKit {
     /**
      * MD5加密 生成32位md5码
      * 
-     * @param 待加密字符串
      * @return 返回32位md5码
      */
     public static String md5Encode(String inStr) throws Exception {

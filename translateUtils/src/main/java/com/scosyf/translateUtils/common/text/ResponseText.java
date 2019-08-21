@@ -1,8 +1,8 @@
 package com.scosyf.translateUtils.common.text;
 
-import java.util.List;
-
 import com.scosyf.translateUtils.common.AbstractResponse;
+
+import java.util.List;
 
 
 public class ResponseText extends AbstractResponse{
@@ -116,9 +116,19 @@ public class ResponseText extends AbstractResponse{
 
     @Override
     public String toString() {
-        return "ResponseParamText [query=" + query + ", translation=" + translation + ", uk_phonetic=" + uk_phonetic
-                + ", us_phonetic=" + us_phonetic + ", explains=" + explains + ", web=" + web + ", l=" + l + ", dict="
-                + dict + ", webdict=" + webdict + ", tSpeakUrl=" + tSpeakUrl + ", speakUrl=" + speakUrl + "]";
+        return "ResponseText{" +
+                "query='" + query + '\'' +
+                ", translation=" + translation +
+                ", uk_phonetic='" + uk_phonetic + '\'' +
+                ", us_phonetic='" + us_phonetic + '\'' +
+                ", explains=" + explains +
+                ", web='" + web + '\'' +
+                ", l='" + l + '\'' +
+                ", dict='" + dict + '\'' +
+                ", webdict='" + webdict + '\'' +
+                ", tSpeakUrl='" + tSpeakUrl + '\'' +
+                ", speakUrl='" + speakUrl + '\'' +
+                ", errorCode='" + errorCode + '\'' +
+                "} " + super.toString();
     }
-
 }

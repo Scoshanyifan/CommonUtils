@@ -1,24 +1,18 @@
 package com.scosyf.utils.net.client;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import com.scosyf.utils.net.common.NetWorkConstant;
+import com.scosyf.utils.net.common.NetWorkTimeout;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSocketFactory;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSocketFactory;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.scosyf.utils.net.common.NetWorkConstant;
-import com.scosyf.utils.net.common.NetWorkTimeout;
 
 
 class NetWorkExecutor {
@@ -87,7 +81,7 @@ class NetWorkExecutor {
                     urlConn.setRequestProperty(header.getKey(), header.getValue());
                 }
             }
-            // 建立连接
+            // 建立POST连接
             if (NetWorkConstant.HTTP_METHOD_POST.equals(httpMethod)) {
                 if (requestContent != null) {
                     os = urlConn.getOutputStream();
@@ -95,6 +89,7 @@ class NetWorkExecutor {
                     os.close();
                 }
             } else {
+                // GET
                 urlConn.connect();
             }
             // 获取响应
