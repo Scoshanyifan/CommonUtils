@@ -15,12 +15,14 @@ import java.util.Random;
 /**
  * https://www.cnblogs.com/liyafei/p/8146136.html
  *
+ * VM options: -Xms100m -Xmx100m
+ *
  * 测试简单的excel读取,即用户模式user model
  * 测试大数据情况下的问题,OOM,GC
  */
 public class ExcelTest {
     
-    public static final String BASE_PATH = "C:/Users/mojun/Desktop/";
+    public static final String BASE_PATH = "D:\\kunbu\\commonUtils\\excelUtils\\temp\\";
     
     private static List<String> headers = Lists.newArrayList("ID", "姓名", "地址", "描述");
     private static List<String> keys = Lists.newArrayList("id", "name", "address", "desc");
@@ -36,8 +38,8 @@ public class ExcelTest {
 
     public static void main(String[] args) {
 
-//        exportExcel();
-        readExcel();
+        exportExcel();
+//        readExcel();
     }
     
     private static void exportExcel() {
