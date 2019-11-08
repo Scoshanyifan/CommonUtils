@@ -5,27 +5,27 @@ import com.scosyf.translateUtils.common.AbstractResponse;
 import java.util.List;
 
 
-public class ResponseText extends AbstractResponse{
+public class ResponseText extends AbstractResponse {
 
     /**
      * create by kunbu
      */
     private static final long serialVersionUID = -3300414313931422492L;
-    
-    private String          query;
-    private List<String>    translation;
+
+    private String query;
+    private List<String> translation;
     // 有道词典-基本词典,查词时才有
-    private String          uk_phonetic;
-    private String          us_phonetic;
-    private List<String>    explains;
+    private String uk_phonetic;
+    private String us_phonetic;
+    private List<String> explains;
     // 有道词典-网络释义，该结果不一定存在
-    private String          web;
-    private String          l;
-    private String          dict;
-    private String          webdict;
-    private String          tSpeakUrl;
-    private String          speakUrl;
-    
+    private String web;
+    private String l;
+    private String dict;
+    private String webdict;
+    private String tSpeakUrl;
+    private String speakUrl;
+
     public String getQuery() {
         return query;
     }

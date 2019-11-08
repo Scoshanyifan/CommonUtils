@@ -59,9 +59,9 @@ public class NetTest {
         }
         String res = HttpsConnectionClient.doRequest(context, "https://www.baidu.com", "get", null);
         System.out.println(res);
-        
+
         res = HttpConnectionClient.doGetRequest("https://www.baidu.com");
         System.out.println(res);
     }
-    
+
 }

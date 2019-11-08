@@ -12,14 +12,14 @@ import com.scosyf.translateUtils.common.text.ResponseText;
 import com.scosyf.translateUtils.common.text.ResultDataText;
 
 public class ResponseHelper {
-    
+
     private static Logger log = LoggerFactory.getLogger(ResponseHelper.class);
-    
+
     /**
      * 获取翻译结果
+     *
      * @param requestUrl
-     * @return
-     * create by kunbu
+     * @return create by kunbu
      */
     public static ResultDataText getTanslateResult(String responseStr) {
         if (responseStr != null) {
@@ -36,7 +36,7 @@ public class ResponseHelper {
             return null;
         }
     }
-    
+
     private static ResultDataText convertResponse(ResponseText response) {
         ResultDataText transRes = new ResultDataText();
         transRes.setOrigin(response.getQuery());
@@ -48,7 +48,7 @@ public class ResponseHelper {
         transRes.setTranslate(basic.toString());
         return transRes;
     }
-    
+
     private static ResponseText handlerResponse(String jsonStr) {
         JSONObject json = JSONObject.parseObject(jsonStr);
         if (json.getString("errorCode").equals("0")) {
@@ -90,13 +90,13 @@ public class ResponseHelper {
             }
         }
         if (json.get("web") != null) {
-            
+
         }
         if (json.get("dict") != null) {
-            
+
         }
         if (json.get("webdict") != null) {
-            
+
         }
         if (json.get("tSpeakUrl") != null) {
             response.settSpeakUrl(json.getString("tSpeakUrl"));

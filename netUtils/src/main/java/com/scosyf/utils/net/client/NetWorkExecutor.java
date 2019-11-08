@@ -20,17 +20,16 @@ class NetWorkExecutor {
     private static Logger log = LoggerFactory.getLogger(NetWorkExecutor.class);
 
     /**
-     * 
      * @param requestUrl
      * @param requestContent 请求内容，如果是GET需拼接
-     * @param httpMethod GET / post
+     * @param httpMethod     GET / post
      * @param requestHeaders
      * @param timeout
      * @param ssl
      * @return
      */
     public static String executeUrlConnection(String requestUrl, String requestContent, String httpMethod,
-            Map<String, String> requestHeaders, NetWorkTimeout timeout, SSLSocketFactory ssl) {
+                                              Map<String, String> requestHeaders, NetWorkTimeout timeout, SSLSocketFactory ssl) {
         httpMethod = httpMethod.toUpperCase();
         // 回应内容
         StringBuilder body = new StringBuilder();
@@ -102,7 +101,7 @@ class NetWorkExecutor {
                     body.append(line);
                 }
             } else {
-                log.error(">>> url connect failure: response msg:[{}], requestUrl:[{}]", 
+                log.error(">>> url connect failure: response msg:[{}], requestUrl:[{}]",
                         urlConn.getResponseMessage(), requestUrl);
             }
         } catch (Exception e) {
@@ -110,9 +109,9 @@ class NetWorkExecutor {
             return null;
         } finally {
             try {
-                if (os != null) 
+                if (os != null)
                     os.close();
-                if (is != null) 
+                if (is != null)
                     is.close();
                 if (reader != null)
                     reader.close();
@@ -127,5 +126,5 @@ class NetWorkExecutor {
         String res = NetWorkExecutor.executeUrlConnection("http://www.baidu.com", null, "get", null, null, null);
         System.out.println(res);
     }
-    
+
 }

@@ -45,7 +45,7 @@ public class ExcelReadUtil {
     /**
      * 简单读取excel(单sheet)
      *
-     * @param data MultiPartFile中的data
+     * @param data             MultiPartFile中的data
      * @param originalFileName 文件名
      */
     public static List<List<String>> readExcelSimple(byte[] data, String originalFileName) {
@@ -60,7 +60,8 @@ public class ExcelReadUtil {
 
     /**
      * 简单读取excel(单sheet)
-     * @param filePath    文件路径
+     *
+     * @param filePath 文件路径
      */
     public static List<List<String>> readExcelSimple(String filePath) {
         try {
@@ -84,8 +85,8 @@ public class ExcelReadUtil {
     /**
      * 简单读取excel(单sheet)
      *
-     * @param in    输入流
-     * @param originalFileName      文件原始名
+     * @param in               输入流
+     * @param originalFileName 文件原始名
      * @author kunbu
      * @time 2019/8/22 14:41
      **/
@@ -94,12 +95,14 @@ public class ExcelReadUtil {
     }
 
     /**
-     * 简单读取excel(单sheet)
+     * 带头行的简单读取，如果headers为null，会顺带返回头行
      *
      * @param in
      * @param originalFileName
+     * @param headers
      * @author kunbu
-     * @time 2019/8/22 14:24
+     * @time 2019/11/8 10:30
+     * @return
      **/
     public static List<List<String>> readExcelSimpleWithHeader(InputStream in, String originalFileName, List<String> headers) {
         try {
@@ -121,9 +124,10 @@ public class ExcelReadUtil {
 
     /**
      * 读取只有一个sheet的excel
-     * @param wb            工作簿
-     * @param headers       首行
-     * @return              row:cell
+     *
+     * @param wb      工作簿
+     * @param headers 首行
+     * @return row:cell
      */
     private static List<List<String>> getExcelWithOneSheet(Workbook wb, List<String> headers) {
         int sheetCount = wb.getNumberOfSheets();
@@ -153,9 +157,9 @@ public class ExcelReadUtil {
     /**
      * 读取包含多个sheet的excel(首行其实位置按照header判断,若有header则从2开始算)
      *
-     * @param wb            工作簿
-     * @param headerArr     头行key,必须和sheet一一对应
-     * @return              sheet:row:cell
+     * @param wb        工作簿
+     * @param headerArr 头行key,必须和sheet一一对应
+     * @return sheet:row:cell
      */
     private static List<List<List<String>>> getExcelWithSheets(Workbook wb, List<List<String>> headerArr) {
         int sheetCount = wb.getNumberOfSheets();
@@ -183,11 +187,11 @@ public class ExcelReadUtil {
     /**
      * 读取sheet TODO 用二维数组代替List
      *
-     * @param wb           工作簿
-     * @param dataRow 	   数据起始行（1 表示第一行）
-     * @param headerSize   首行size（-1 表示无）
-     * @param sheetIdx     表格下标
-     * @return             row:cell
+     * @param wb         工作簿
+     * @param dataRow    数据起始行（1 表示第一行）
+     * @param headerSize 首行size（-1 表示无）
+     * @param sheetIdx   表格下标
+     * @return row:cell
      */
     private static List<List<String>> getSheet(Workbook wb, int dataRow, int headerSize, int sheetIdx) {
         List<List<String>> rowArr = Lists.newArrayList();
@@ -220,6 +224,7 @@ public class ExcelReadUtil {
 
     /**
      * 获取每格的值
+     *
      * @param cell 单元格
      * @return value的字符串形式
      */

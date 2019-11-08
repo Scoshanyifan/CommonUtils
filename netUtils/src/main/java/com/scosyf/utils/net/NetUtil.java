@@ -21,61 +21,58 @@ import java.util.Map;
  * @description:
  */
 public class NetUtil {
-	
+
     private static final Logger logger = LoggerFactory.getLogger(NetUtil.class);
 
     public static final String HTTP_METHOD_GET = "GET";
     public static final String HTTP_METHOD_POST = "POST";
 
-    public static final int    DEFAULT_CONNECT_TIMEOUT = 3000;
-    public static final int    DEFAULT_READ_TIMEOUT    = 3000;
+    public static final int DEFAULT_CONNECT_TIMEOUT = 3000;
+    public static final int DEFAULT_READ_TIMEOUT = 3000;
 
     /**
-     * 
-     * @param requestUrl    请求域名
-     * @param params        参数内容
-     * @param httpMethod    请求方式 {@link #HTTP_METHOD_GET} {@link #HTTP_METHOD_POST}
+     * @param requestUrl     请求域名
+     * @param params         参数内容
+     * @param httpMethod     请求方式 {@link #HTTP_METHOD_GET} {@link #HTTP_METHOD_POST}
      * @param connectTimeout 连接超时时间
      * @param readTimeout    读取超时时间
      * @return
      */
     public static Map<String, Object> doRequest(
             String requestUrl, Map<String, Object> params, String httpMethod, Integer connectTimeout, Integer readTimeout) {
-    	return doRequest(requestUrl, params, null, httpMethod, connectTimeout, readTimeout, null);
+        return doRequest(requestUrl, params, null, httpMethod, connectTimeout, readTimeout, null);
     }
-    
+
     /**
-     * 
-     * @param requestUrl    请求域名
-     * @param params        参数内容
-     * @param httpMethod    请求方式 {@link #HTTP_METHOD_GET} {@link #HTTP_METHOD_POST}
+     * @param requestUrl     请求域名
+     * @param params         参数内容
+     * @param httpMethod     请求方式 {@link #HTTP_METHOD_GET} {@link #HTTP_METHOD_POST}
      * @param connectTimeout 连接超时时间
      * @param readTimeout    读取超时时间
      * @return
      */
     public static Map<String, Object> doRequestWithDefaultSSL(
             String requestUrl, Map<String, Object> params, String httpMethod, Integer connectTimeout, Integer readTimeout) {
-    	
+
         SSLSocketFactory ssf = null;
         try {
-        	// 创建SSLContext对象，并使用我们指定的信任管理器初始化
-        	TrustManager[] tm = { new AnyX509TrustManager() };
-        	SSLContext sslContext = SSLContext.getInstance("SSL", "SunJSSE");
+            // 创建SSLContext对象，并使用我们指定的信任管理器初始化
+            TrustManager[] tm = {new AnyX509TrustManager()};
+            SSLContext sslContext = SSLContext.getInstance("SSL", "SunJSSE");
             sslContext.init(null, tm, new java.security.SecureRandom());
             // 从SSLContext对象中得到SSLSocketFactory对象
             ssf = sslContext.getSocketFactory();
         } catch (Exception e) {
-        	logger.error("获取SSLContext实例时发生异常！", e);
+            logger.error("获取SSLContext实例时发生异常！", e);
         }
-    	return doRequest(requestUrl, params, null, httpMethod, connectTimeout, readTimeout, ssf);
+        return doRequest(requestUrl, params, null, httpMethod, connectTimeout, readTimeout, ssf);
     }
 
     /**
-     * 
-     * @param requestUrl    请求域名
-     * @param params        参数内容
-     * @param header        请求头
-     * @param httpMethod    请求方式 {@link #HTTP_METHOD_GET} {@link #HTTP_METHOD_POST}
+     * @param requestUrl     请求域名
+     * @param params         参数内容
+     * @param header         请求头
+     * @param httpMethod     请求方式 {@link #HTTP_METHOD_GET} {@link #HTTP_METHOD_POST}
      * @param connectTimeout 连接超时时间
      * @param readTimeout    读取超时时间
      * @param ssf            ssl工厂类
@@ -85,7 +82,7 @@ public class NetUtil {
             String requestUrl,
             Map<String, Object> params,
             Map<String, String> header,
-            String httpMethod,	
+            String httpMethod,
             Integer connectTimeout,
             Integer readTimeout,
             SSLSocketFactory ssf) {
@@ -105,14 +102,14 @@ public class NetUtil {
                 StringBuilder queryBody = new StringBuilder();
                 for (Map.Entry<String, Object> entry : params.entrySet()) {
                     queryBody.append(entry.getKey())
-                             .append("=")
-                             //内容需要url encode
-                             .append(URLEncoder.encode(entry.getValue().toString(), "UTF-8"))
-                             .append("&");
+                            .append("=")
+                            //内容需要url encode
+                            .append(URLEncoder.encode(entry.getValue().toString(), "UTF-8"))
+                            .append("&");
                 }
                 queryString = queryBody.deleteCharAt(queryBody.length() - 1).toString();
             }
-            
+
             // GET请求url和请求参数进行拼接
             if (HTTP_METHOD_GET.equalsIgnoreCase(httpMethod)) {
                 if (queryString != null && queryString.length() > 0) {
@@ -136,9 +133,9 @@ public class NetUtil {
             // 设定请求方式
             httpUrlConnection.setRequestMethod(httpMethod);
             // 超时时间设置
-            httpUrlConnection.setConnectTimeout(connectTimeout != null ? connectTimeout :DEFAULT_CONNECT_TIMEOUT);
+            httpUrlConnection.setConnectTimeout(connectTimeout != null ? connectTimeout : DEFAULT_CONNECT_TIMEOUT);
             httpUrlConnection.setReadTimeout(readTimeout != null ? readTimeout : DEFAULT_READ_TIMEOUT);
-            
+
             //设置header
             if (header != null) {
                 for (Map.Entry<String, String> entry : header.entrySet()) {
@@ -147,7 +144,7 @@ public class NetUtil {
             }
 
             if (HTTP_METHOD_GET.equalsIgnoreCase(httpMethod)) {
-            	// GET方式访问
+                // GET方式访问
                 httpUrlConnection.connect();
             } else {
                 // POST方式需要建立流，向指向的URL传入参数
@@ -195,7 +192,7 @@ public class NetUtil {
         }
         return result;
     }
-    
+
     private static void closeResource(Map<String, Object> result, Closeable resource) {
         if (resource != null) {
             try {
