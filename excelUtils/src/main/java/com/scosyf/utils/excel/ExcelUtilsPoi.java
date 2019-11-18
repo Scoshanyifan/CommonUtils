@@ -26,7 +26,7 @@ import com.scosyf.utils.net.URLUtils;
  *
  */
 public class ExcelUtilsPoi {
-    
+
     public static final int HSSF = 1;
     public static final String EXCEL_XLS = "xls";
     
@@ -101,7 +101,6 @@ public class ExcelUtilsPoi {
     
     /**
      * file转换excel的workbook
-     * @param file
      * @return
      * @throws Exception
      */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/commonUtils.iml" filepath="$PROJECT_DIR$/commonUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/excelUtils/excelUtils.iml" filepath="$PROJECT_DIR$/excelUtils/excelUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netUtils/netUtils.iml" filepath="$PROJECT_DIR$/netUtils/netUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/translateUtils/translateUtils.iml" filepath="$PROJECT_DIR$/translateUtils/translateUtils.iml" />
+    </modules>
+  </component>
+</project>
