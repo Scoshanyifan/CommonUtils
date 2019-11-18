@@ -14,7 +14,7 @@
     <bytecodeTargetLevel>
       <module name="commonUtils" target="1.5" />
       <module name="excelUtils" target="1.5" />
-      <module name="netUtils" target="1.5" />
+      <module name="netUtils" target="6" />
       <module name="translateUtils" target="1.5" />
     </bytecodeTargetLevel>
   </component>

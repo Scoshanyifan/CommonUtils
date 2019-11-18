@@ -7,7 +7,7 @@ import com.scosyf.utils.net.client.HttpConnectionClient;
 
 
 public class YoudaoHttpClient {
-    
+
     private static Logger log = LoggerFactory.getLogger(YoudaoHttpClient.class);
 
     public static String getTranslateRes(String requestUrl) {
@@ -21,5 +21,5 @@ public class YoudaoHttpClient {
             return null;
         }
     }
-    
+
 }

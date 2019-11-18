@@ -1,24 +1,18 @@
 package com.scosyf.utils.net.client;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import com.scosyf.utils.net.common.NetWorkConstant;
+import com.scosyf.utils.net.common.NetWorkTimeout;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSocketFactory;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSocketFactory;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.scosyf.utils.net.common.NetWorkConstant;
-import com.scosyf.utils.net.common.NetWorkTimeout;
 
 
 class NetWorkExecutor {
@@ -26,17 +20,16 @@ class NetWorkExecutor {
     private static Logger log = LoggerFactory.getLogger(NetWorkExecutor.class);
 
     /**
-     * 
      * @param requestUrl
      * @param requestContent 请求内容，如果是GET需拼接
-     * @param httpMethod GET / post
+     * @param httpMethod     GET / post
      * @param requestHeaders
      * @param timeout
      * @param ssl
      * @return
      */
     public static String executeUrlConnection(String requestUrl, String requestContent, String httpMethod,
-            Map<String, String> requestHeaders, NetWorkTimeout timeout, SSLSocketFactory ssl) {
+                                              Map<String, String> requestHeaders, NetWorkTimeout timeout, SSLSocketFactory ssl) {
         httpMethod = httpMethod.toUpperCase();
         // 回应内容
         StringBuilder body = new StringBuilder();
@@ -87,7 +80,7 @@ class NetWorkExecutor {
                     urlConn.setRequestProperty(header.getKey(), header.getValue());
                 }
             }
-            // 建立连接
+            // 建立POST连接
             if (NetWorkConstant.HTTP_METHOD_POST.equals(httpMethod)) {
                 if (requestContent != null) {
                     os = urlConn.getOutputStream();
@@ -95,6 +88,7 @@ class NetWorkExecutor {
                     os.close();
                 }
             } else {
+                // GET
                 urlConn.connect();
             }
             // 获取响应
@@ -107,7 +101,7 @@ class NetWorkExecutor {
                     body.append(line);
                 }
             } else {
-                log.error(">>> url connect failure: response msg:[{}], requestUrl:[{}]", 
+                log.error(">>> url connect failure: response msg:[{}], requestUrl:[{}]",
                         urlConn.getResponseMessage(), requestUrl);
             }
         } catch (Exception e) {
@@ -115,9 +109,9 @@ class NetWorkExecutor {
             return null;
         } finally {
             try {
-                if (os != null) 
+                if (os != null)
                     os.close();
-                if (is != null) 
+                if (is != null)
                     is.close();
                 if (reader != null)
                     reader.close();
@@ -132,5 +126,5 @@ class NetWorkExecutor {
         String res = NetWorkExecutor.executeUrlConnection("http://www.baidu.com", null, "get", null, null, null);
         System.out.println(res);
     }
-    
+
 }

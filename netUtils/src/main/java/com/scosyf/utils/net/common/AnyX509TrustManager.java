@@ -12,7 +12,7 @@ import javax.net.ssl.X509TrustManager;
  * https连接用证书信任管理器。
  * <p>
  * 本信任管理器信任任何证书，各类型的https应用需要继承本类来定制各自的证书信任管理器。
- * 
+ *
  * @author <a href="mailto:shiban@microants.cn">石斑</a>
  * @version 1.0.0 2016年12月18日
  * @since 1.0.0

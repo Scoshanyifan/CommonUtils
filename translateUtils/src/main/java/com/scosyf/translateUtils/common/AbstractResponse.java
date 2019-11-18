@@ -8,7 +8,7 @@ public abstract class AbstractResponse implements Serializable {
      * create by kunbu
      */
     private static final long serialVersionUID = 2500695833563890106L;
-  
+
     public String errorCode;
 
     public String getErrorCode() {
@@ -23,5 +23,5 @@ public abstract class AbstractResponse implements Serializable {
     public String toString() {
         return "ResponseParamBase [errorCode=" + errorCode + "]";
     }
-    
+
 }

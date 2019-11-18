@@ -11,12 +11,13 @@ import com.scosyf.translateUtils.http.YoudaoHttpClient;
 
 
 public class YoudaoTranslateAPI {
-    
+
     private static Logger log = LoggerFactory.getLogger(YoudaoHttpClient.class);
-    
+
     /**
      * 英翻中
-     * @param word
+     *
+     * @param english
      * @return 翻译结果，若查询异常返回原始数据
      */
     public static String getTranslateEN2CH(String english) {
@@ -27,9 +28,10 @@ public class YoudaoTranslateAPI {
             return english;
         }
     }
-    
+
     /**
      * 中翻英
+     *
      * @param chinese
      * @return 翻译结果，若查询异常返回原始数据
      */
@@ -41,9 +43,10 @@ public class YoudaoTranslateAPI {
             return chinese;
         }
     }
-    
+
     /**
      * 中翻日
+     *
      * @param chinese
      * @return 翻译结果，若查询异常返回原始数据
      */
@@ -55,12 +58,13 @@ public class YoudaoTranslateAPI {
             return chinese;
         }
     }
-    
+
     /**
      * 翻译
+     *
      * @param query 查询内容
-     * @param from 原始语言
-     * @param to 目标语言
+     * @param from  原始语言
+     * @param to    目标语言
      * @return 翻译失败返回null
      */
     public static ResultDataText getTranslate(String query, String from, String to) {
@@ -79,7 +83,7 @@ public class YoudaoTranslateAPI {
         }
         return getTranslateResult(requestUrl);
     }
-    
+
     private static ResultDataText getTranslateResult(String requestUrl) {
         String responseStr = YoudaoHttpClient.getTranslateRes(requestUrl);
         ResultDataText translateRes = ResponseHelper.getTanslateResult(responseStr);
@@ -89,7 +93,7 @@ public class YoudaoTranslateAPI {
             return null;
         }
     }
-    
+
     public static void main(String[] args) {
         System.out.println(getTranslateEN2CH("holy shit"));
         System.out.println(getTranslateCH2EN("舰长补给全保底，舰长副本零掉落"));
