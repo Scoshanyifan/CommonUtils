@@ -13,7 +13,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <poi.version>3.9</poi.version>
+        <poi.version>3.17</poi.version>
         <poi.ooxml.version>3.9</poi.ooxml.version>
     </properties>
 
